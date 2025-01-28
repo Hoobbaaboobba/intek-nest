@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgresql://rc5550463:s0OnPu5fYzrv@ep-patient-sunset-a2dqzj8x.eu-central-1.aws.neon.tech/compress-db?sslmode=require
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
