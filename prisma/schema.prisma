@@ -17,15 +17,16 @@ model VideoAccess {
   id           Int      @id @default(autoincrement())
   fio_or_name  String
   video_title  String
-  access_status Int
+  video_id     Int
+  access_status Int      @default(-1)
 
-  video        Videos   @relation(fields: [video_title], references: [video_title])
+  video        Videos   @relation(fields: [video_id], references: [id])
 }
 
 model Videos {
   id          Int      @id @default(autoincrement())
   link        String   @unique
-  video_title String   @unique
+  video_title String
   created_at  DateTime @default(now())
   start_date  DateTime
   end_date    DateTime
